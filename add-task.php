@@ -14,7 +14,7 @@ require_once "bdd-crud.php";
     <title>Document</title>
 </head>
 <body>
-    <!-- TODO Formulaire pour ajouter une tâche CC c'est BBinitial -->
+    <!-- TODO Formulaire pour ajouter une tâche -->
     
 </body>
 </html>
