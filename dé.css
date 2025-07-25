@@ -1,0 +1,10 @@
+body {
+    background-color: brown;
+}
+
+.square {
+    background-color: blue;
+    border: black solid 10px;
+    height: 50px;
+    width: 50px;
+}
