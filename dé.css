@@ -15,9 +15,6 @@ body {
 .container-carre {
   display: flex;
   justify-content: center;
-
-
-
 }
 
 
@@ -72,6 +69,7 @@ body {
     rgba(194, 242, 255, 0.09) 0px 8px 4px,
     rgba(194, 242, 255, 0.09) 0px 16px 8px,
     rgba(194, 242, 255, 0.09) 0px 32px 16px;
+
 }
 
 
@@ -100,7 +98,7 @@ rgba(50, 50, 93, 0.09) 0px 32px 16px;
   box-shadow: 0.375em 0.375em 0 0 rgb(255, 255, 255, 0.125);
   height: 3em;
   width: 3em;
-  margin: 10px;
+  margin: 50px;
   box-shadow:
     0 0 5px rgba(255, 255, 255, 0.2),
     0 0 15px rgba(255, 255, 255, 0.3),
