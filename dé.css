@@ -8,7 +8,7 @@
 
 
 body {
-background-color: #011962;
+  background-color: #011962;
 
 }
 
@@ -24,7 +24,7 @@ background-color: #011962;
 .square {
 
   background-color: #011962;
-  border: rgba(255, 255, 255, 0.3) solid 5px;
+  /* border: rgba(255, 255, 255, 0.3) solid 5px; */
   box-shadow:
     0 0 5px rgba(255, 255, 255, 0.2),
     0 0 15px rgba(255, 255, 255, 0.3),
@@ -32,7 +32,7 @@ background-color: #011962;
     0 0 60px rgba(255, 255, 255, 0.5);
   height: 300px;
   width: 300px;
-  border-radius: 25%;
+  border-radius: 17%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,47 +41,61 @@ background-color: #011962;
 
 }
 
-#square-first{
-  box-shadow: rgba(255, 255, 255,0.17) 
-  0px -23px 25px 0px inset, 
- rgba(255, 255, 255,0.15)  0px -36px 30px 0px inset,
-rgba(255, 255, 255,0.1)  0px -79px 40px 0px inset, 
- rgba(255, 255, 255,0.06)  0px 2px 1px, 
-rgba(255, 255, 255,0.09)  0px 4px 2px, 
- rgba(255, 255, 255,0.09)  0px 8px 4px, 
-  rgba(255, 255, 255,0.09)  0px 16px 8px, 
-  rgba(255, 255, 255,0.09)  0px 32px 16px;
+#square-first {
+  box-shadow: rgba(194, 242, 255, 0.17) 0px -23px 25px 0px inset,
+    rgba(194, 242, 255, 0.15) 0px -36px 30px 0px inset,
+    rgba(194, 242, 255, 0.1) 0px -79px 40px 0px inset,
+    rgba(194, 242, 255, 0.06) 0px 2px 1px,
+    rgba(194, 242, 255, 0.09) 0px 4px 2px,
+    rgba(194, 242, 255, 0.09) 0px 8px 4px,
+    rgba(194, 242, 255, 0.09) 0px 16px 8px,
+    rgba(194, 242, 255, 0.09) 0px 32px 16px;
 }
 
-#square-second{
-  box-shadow: rgba(255, 255, 255,0.17) 
-  0px -23px 25px 0px inset, 
- rgba(255, 255, 255,0.15)  0px -36px 30px 0px inset,
-rgba(255, 255, 255,0.1)  0px -79px 40px 0px inset, 
- rgba(255, 255, 255,0.06)  0px 2px 1px, 
-rgba(255, 255, 255,0.09)  0px 4px 2px, 
- rgba(255, 255, 255,0.09)  0px 8px 4px, 
-  rgba(255, 255, 255,0.09)  0px 16px 8px, 
-  rgba(255, 255, 255,0.09)  0px 32px 16px;
+#square-second {
+  box-shadow: rgba(194, 242, 255, 0.17) 0px -23px 25px 0px inset,
+    rgba(194, 242, 255, 0.15) 0px -36px 30px 0px inset,
+    rgba(194, 242, 255, 0.1) 0px -79px 40px 0px inset,
+    rgba(194, 242, 255, 0.06) 0px 2px 1px,
+    rgba(194, 242, 255, 0.09) 0px 4px 2px,
+    rgba(194, 242, 255, 0.09) 0px 8px 4px,
+    rgba(194, 242, 255, 0.09) 0px 16px 8px,
+    rgba(194, 242, 255, 0.09) 0px 32px 16px;
 }
 
-#square-third{
-  box-shadow: rgba(194, 242, 255,0.17) 
-  0px -23px 25px 0px inset, 
- rgba(194, 242, 255,0.15)  0px -36px 30px 0px inset,
-rgba(194, 242, 255,0.1)  0px -79px 40px 0px inset, 
- rgba(194, 242, 255,0.06)  0px 2px 1px, 
-rgba(194, 242, 255, 0.09)  0px 4px 2px, 
- rgba(194, 242, 255,0.09)  0px 8px 4px, 
-  rgba(194, 242, 255,0.09)  0px 16px 8px, 
-  rgba(194, 242, 255,0.09)  0px 32px 16px;
+#square-third {
+  box-shadow: rgba(194, 242, 255, 1) 0px 0px 70px -30px inset,
+    rgba(194, 242, 255, 0.30) 0px -36px 30px 0px inset,
+    rgba(194, 242, 255, 0.1) 0px -79px 40px 0px inset,
+    rgba(194, 242, 255, 0.06) 0px 2px 1px,
+    rgba(194, 242, 255, 0.09) 0px 4px 2px,
+    rgba(194, 242, 255, 0.09) 0px 8px 4px,
+    rgba(194, 242, 255, 0.09) 0px 16px 8px,
+    rgba(194, 242, 255, 0.09) 0px 32px 16px;
 }
 
 
+.circle .pin {
+background: conic-gradient(from 180deg at 50% 50%, #fff 0deg, #c2f2ff 120.07deg, #34608b 179.52deg, #011962  241.65deg, #fff 299.6deg, #c2f2ff 360deg);
+filter: blur(20px);
+ border: 3px solid #c2f2ff33;
+background-color: rgba(194, 242, 255, 0.2);
+ border-radius: 50%;
+ height: 6em;
+  width: 6em;
+ box-shadow: rgba(50, 50, 93, 0.17) 0px -23px 25px 0px inset, 
+rgba(50, 50, 93, 0.15) 0px -36px 30px 0px inset, 
+rgba(50, 50, 93, 0.1) 0px -79px 40px 0px inset, 
+rgba(50, 50, 93, 0.06) 0px 2px 1px, rgba(50, 50, 93, 0.09) 0px 4px 2px, 
+rgba(50, 50, 93, 0.09) 0px 8px 4px, rgba(50, 50, 93, 0.09) 0px 16px 8px, 
+rgba(50, 50, 93, 0.09) 0px 32px 16px;
+}
 
 .circle {
-  /* background-color: rgb(60, 144, 248); */
-  /* background: rgba(60, 144, 248, 0.5); */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   box-shadow: 0.375em 0.375em 0 0 rgb(255, 255, 255, 0.125);
   height: 3em;
@@ -94,4 +108,12 @@ rgba(194, 242, 255, 0.09)  0px 4px 2px,
     0 0 60px rgba(255, 255, 255, 0.5);
 
 }
+
+.circle .pin .pinpin{
+  background-color: aqua;
+  height: 2em;
+  width: 2em;
+  z-index: 7;
+}
+
 
