@@ -22,7 +22,16 @@ require_once "bdd-crud.php";
     <h1>Liste des tâches</h1>
     <div class="tasks"> 
         <!-- TODO Afficher la liste des tâches de l'utilisateur connecté -->
+<?php     var_dump($user['name']); ?>
+<?php if ($user != null): ?>
+    <div class="profile">
+        <h1>Profil de <?php echo htmlspecialchars($user['name']); ?></h1>
+        <img src="<?php echo htmlspecialchars($user['photo']); ?>" alt="Photo de profil">
+    </div> 
+<?php else: ?>
+    <p>Aucun utilisateur connecté.</p>
 
+<?php endif; ?>
     </div>
 </body>
 </html>
