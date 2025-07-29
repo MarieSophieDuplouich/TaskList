@@ -16,22 +16,39 @@ function connect_database() : PDO{
 }
 // CRUD User
 // Create (signin)
-function create_user(string $email,string $password) : int | null {
+function create_user(string $nom_utilisateur,string $password) : int | null {
     $database = connect_database();
     // TODO
+    $hashed_pwd =  password_hash($password,PASSWORD_BCRYPT);
 
-    return $user_id;
-}
+    $request = $database ->prepare("INSERT INTO User(nom_utilisateur,password)VALUES (?,?)");
+
+    $isSuccessful = $request->execute([$nom_utilisateur,$hashed_pwd]);
+
+    if ($isSuccessful) {
+
+        return (int)$database ->lastInsertId();
+    }
+    return null;
+    }
+    
+
 // Read (login)
 function get_user(int $id) : array | null {
     $database = connect_database();
     // TODO 
+    $request = $database ->prepare("SELECT id, nom_utilisateur, password FROM User WHERE id = ?");
+    $request->execute([$id]);
+    $user = $request->fetch(PDO::FETCH_ASSOC);
+    if($user===false){
+        return null;
+    }
 
     return $user;
 }
 
 
-// CRUD Task
+// CRUD Task AAAAAAHHHHHH
 // Create
 function add_task(string $name,string $description) : int | null {
     $database = connect_database();
