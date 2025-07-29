@@ -1,0 +1,40 @@
+ /* css commun à toutes les pages */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: black 1px solid; */
+    color: #FFFFFF;
+}
+
+body {
+    font-family: JejuGothic, sans-serif;
+      background-color: #011962;
+    cursor: grab;
+}
+
+form{
+     box-shadow: rgba(194, 242, 255, 0.17) 0px -23px 25px 0px inset,
+    rgba(194, 242, 255, 0.15) 0px -36px 30px 0px inset,
+    rgba(194, 242, 255, 0.1) 0px -79px 40px 0px inset,
+    rgba(194, 242, 255, 0.06) 0px 2px 1px,
+    rgba(194, 242, 255, 0.09) 0px 4px 2px,
+    rgba(194, 242, 255, 0.09) 0px 8px 4px,
+    rgba(194, 242, 255, 0.09) 0px 16px 8px,
+    rgba(194, 242, 255, 0.09) 0px 32px 16px;
+}
+
+/* accueil index.php*/
+
+/* inscription.php */
+
+/* login.php */
+
+/* logout.php */
+
+
+/* add-task.php */
+
+/* show-task.php bonus */
+
+/* validate-task.php bonus */
