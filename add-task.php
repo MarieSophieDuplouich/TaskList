@@ -11,9 +11,10 @@ require_once "bdd-crud.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ajouter une tâche</title>
 </head>
 <body>
+    <h1>Ajouter une tâche</h1>
     <!-- TODO Formulaire pour ajouter une tâche -->
     
 </body>

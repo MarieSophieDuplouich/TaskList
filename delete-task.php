@@ -13,6 +13,6 @@ require_once "bdd-crud.php";
     <title>Supprimer une tache</title>
 </head>
 <body>
-    
+    <h1>Supprimer une tâche</h1>
 </body>
 </html>

@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: black 1px solid; */
+  border: black 1px solid;
   color: #FFFFFF;
 }
 
@@ -15,6 +15,8 @@ body {
 .container-carre {
   display: flex;
   justify-content: center;
+  perspective: 1200px;
+  /* profondeur en 3D */
 }
 
 
@@ -38,7 +40,10 @@ body {
 
 }
 
+
 #square-first {
+  
+
   box-shadow: rgba(194, 242, 255, 0.17) 0px -23px 25px 0px inset,
     rgba(194, 242, 255, 0.15) 0px -36px 30px 0px inset,
     rgba(194, 242, 255, 0.1) 0px -79px 40px 0px inset,
@@ -50,6 +55,10 @@ body {
 }
 
 #square-second {
+   /* effet 3D */
+  transform-style: preserve-3d;
+  transform: rotateX(10deg) rotateY(-10deg) skewY(15deg);
+
   box-shadow: rgba(194, 242, 255, 0.17) 0px -23px 25px 0px inset,
     rgba(194, 242, 255, 0.15) 0px -36px 30px 0px inset,
     rgba(194, 242, 255, 0.1) 0px -79px 40px 0px inset,
@@ -61,6 +70,9 @@ body {
 }
 
 #square-third {
+     /* effet 3D */
+  transform-style: preserve-3d;
+  transform: rotateX(25deg) rotateY(10deg) skewY(-20deg);
   box-shadow: rgba(194, 242, 255, 1) 0px 0px 70px -30px inset,
     rgba(194, 242, 255, 0.30) 0px -36px 30px 0px inset,
     rgba(194, 242, 255, 0.1) 0px -79px 40px 0px inset,
@@ -74,19 +86,19 @@ body {
 
 
 .circle .pin {
-background: conic-gradient(from 180deg at 50% 50%, #fff 0deg, #c2f2ff 120.07deg, #34608b 179.52deg, #011962  241.65deg, #fff 299.6deg, #c2f2ff 360deg);
-filter: blur(20px);
- border: 3px solid #c2f2ff33;
-background-color: rgba(194, 242, 255, 0.2);
- border-radius: 50%;
- height: 6em;
+  background: conic-gradient(from 180deg at 50% 50%, #fff 0deg, #c2f2ff 120.07deg, #34608b 179.52deg, #011962 241.65deg, #fff 299.6deg, #c2f2ff 360deg);
+  filter: blur(20px);
+  border: 3px solid #c2f2ff33;
+  background-color: rgba(194, 242, 255, 0.2);
+  border-radius: 50%;
+  height: 6em;
   width: 6em;
- box-shadow: rgba(50, 50, 93, 0.17) 0px -23px 25px 0px inset, 
-rgba(50, 50, 93, 0.15) 0px -36px 30px 0px inset, 
-rgba(50, 50, 93, 0.1) 0px -79px 40px 0px inset, 
-rgba(50, 50, 93, 0.06) 0px 2px 1px, rgba(50, 50, 93, 0.09) 0px 4px 2px, 
-rgba(50, 50, 93, 0.09) 0px 8px 4px, rgba(50, 50, 93, 0.09) 0px 16px 8px, 
-rgba(50, 50, 93, 0.09) 0px 32px 16px;
+  box-shadow: rgba(50, 50, 93, 0.17) 0px -23px 25px 0px inset,
+    rgba(50, 50, 93, 0.15) 0px -36px 30px 0px inset,
+    rgba(50, 50, 93, 0.1) 0px -79px 40px 0px inset,
+    rgba(50, 50, 93, 0.06) 0px 2px 1px, rgba(50, 50, 93, 0.09) 0px 4px 2px,
+    rgba(50, 50, 93, 0.09) 0px 8px 4px, rgba(50, 50, 93, 0.09) 0px 16px 8px,
+    rgba(50, 50, 93, 0.09) 0px 32px 16px;
 }
 
 .circle {
@@ -107,11 +119,9 @@ rgba(50, 50, 93, 0.09) 0px 32px 16px;
 
 }
 
-.circle .pin .pinpin{
+.circle .pin .pinpin {
   background-color: aqua;
   height: 2em;
   width: 2em;
   z-index: 7;
 }
-
-

@@ -14,6 +14,7 @@ require_once "bdd-crud.php";
 </head>
 
 <body>
+    <h1>Inscription</h1>
    <!-- TODO Formulaire pour s'inscrire (créer un utilisateur) -->
 </body>
 
