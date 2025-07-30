@@ -1,17 +1,10 @@
 <?php
 session_start();
 
-// if( $_SESSION['user_id'])
-// {
-//  $_SESSION['user_id'] = 1;
-// }
-
-
 $isSuccess = false;
 
 if (
-    isset($_POST["name"]) &&
-    isset($_POST["email"]) &&
+    isset($_POST["nom_utilisateur"]) &&
     isset($_POST["password"])
 
 ) {
@@ -21,10 +14,9 @@ if (
         $database = new PDO("mysql:host=127.0.0.1;dbname=app-database", "root", "root");
         var_dump($database);
         $userId = $_SESSION['user_id'];
-        $request = $database->prepare("INSERT INTO user_sept(name,email,password,user_id) VALUES (?,?,?,?)");
+        $request = $database->prepare("INSERT INTO User(id,nom_utilisateur,password,user_id) VALUES (:id,:nom_utilisateur,:password,:user_id)");
         $isSuccess = $request->execute([
-            $_POST["name"],
-            $_POST["email"],
+            $_POST["nom_utilisateur"],
             $_POST["password"],
             $userId
         ]);
@@ -60,8 +52,7 @@ require_once "bdd-crud.php";
     <a href="inscription.php">S'inscrire</a>
     <a href="seconnecter.php">Se connecter</a>
     <form action="" method="post">
-        <input type="text" name="name" placeholder="votre nom...">
-        <input type="email" name="email" placeholder="votre email...">
+        <input type="text" name="nom_utilisateur" placeholder="votre nom...">
         <input type="password" name="password" placeholder="votre mot de passe...">
         <button>S'inscrire</button>
     </form>

@@ -24,7 +24,7 @@ function create_user(string $nom_utilisateur, string $password): int | null
     // TODO
     $hashed_pwd =  password_hash($password, PASSWORD_BCRYPT);
 
-    $request = $database->prepare("INSERT INTO User(nom_utilisateur,password)VALUES (?,?)");
+    $request = $database->prepare("INSERT INTO User(nom_utilisateur,password)VALUES (:nom_utilisateur,:password)"); 
 
     $isSuccessful = $request->execute([$nom_utilisateur, $hashed_pwd]);
 
@@ -41,7 +41,7 @@ function get_user(int $id): array | null
 {
     $database = connect_database();
     // TODO 
-    $request = $database->prepare("SELECT id, nom_utilisateur, password FROM User WHERE id = ?");
+    $request = $database->prepare("SELECT id, nom_utilisateur, password FROM User WHERE id =:id");
     $request->execute([$id]);
     $user = $request->fetch(PDO::FETCH_ASSOC);
     if ($user === false) {
@@ -54,20 +54,20 @@ function get_user(int $id): array | null
 
 // // CRUD Task les tâches la table c'est task
 // // ajouter add  le name est le nom de la tâche // remplir la table task
-function add_task(string $name, string $description): int | null
+function add_task(int $user_id, string $name, string $description): int | null
 {
     $database = connect_database();
-    $sql = "INSERT INTO task (name, description) VALUES (:nom, :description)";
+    $sql = "INSERT INTO task (user_id, name, description) VALUES (:user_id, :name, :description)";
     $stmt = $database->prepare($sql);
-    $stmt->execute(['nom' => $name, 'description' => $description]);
+    $stmt->execute(['user_id' => $user_id,'name' => $name, 'description' => $description]);
      
      $task_id = $database->lastInsertId();
 
     return $task_id; //ça je dois garder 
-    var_dump($name);
-    var_dump($description);
 
 }
+
+//remarque  VALUES (:user_id, :name, :description)"; ou VALUES (?,?,?)"; c'est pareil mais c'est mieux les :name car on ne se trompe pas et c'est une meilleure pratique
 
 // //Read
 function get_task(int $id): array | null
@@ -107,7 +107,7 @@ function delete_task(int $id) : bool{
 function update(int $id, $name,$description)
 {
     $database = connect_database();
-    $sql = "UPDATE task SET name = :nom, description = :description WHERE id = :id";
+    $sql = "UPDATE task SET name = :name, description = :description WHERE id = :id";
     $stmt = $database->prepare($sql);
-    $stmt->execute(['id' => $id, 'nom' => $name, 'description' => $description]); //ça je dois garder il manque pdo fetch qqchose je pense
+    $stmt->execute(['id' => $id, 'name' => $name, 'description' => $description]); //ça je dois garder il manque pdo fetch qqchose je pense
 }
