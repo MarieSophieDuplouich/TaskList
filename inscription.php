@@ -14,10 +14,10 @@ if (
         $database = new PDO("mysql:host=127.0.0.1;dbname=app-database", "root", "root");
         var_dump($database);
         $userId = $_SESSION['user_id'];
-        $request = $database->prepare("INSERT INTO User(id,nom_utilisateur,password,user_id) VALUES (:id,:nom_utilisateur,:password,:user_id)");
+        $request = $database->prepare("INSERT INTO User(nom_utilisateur,password) VALUES (:nom_utilisateur,:password)");
         $isSuccess = $request->execute([
             $_POST["nom_utilisateur"],
-            $_POST["password"],
+            $_POST["password"], // revenir ici create user ??? à supprimer ???
             $userId
         ]);
         var_dump($isSuccess);

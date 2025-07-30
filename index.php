@@ -1,7 +1,6 @@
 <?php session_start();
 require_once "bdd-crud.php";
 ?>
-<?php require_once "add-task.php";  //add-task.php?>
 <?php
 // Test auth
 if(isset($_SESSION["user_id"]) == false){
