@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Ce fichier contient les fonctions de CRUD pour les utilisateurs et les tâches.
  * Il est utilisé pour interagir avec la base de données.
@@ -10,37 +11,40 @@
  */
 
 
-function connect_database() : PDO{
-    $database = new PDO("mysql:host=127.0.0.1;dbname=app-database","root","root");
+function connect_database(): PDO
+{
+    $database = new PDO("mysql:host=127.0.0.1;dbname=app-database", "root", "root");
     return $database;
 }
 // CRUD User
 // Create (signin)
-function create_user(string $nom_utilisateur,string $password) : int | null {
+function create_user(string $nom_utilisateur, string $password): int | null
+{
     $database = connect_database();
     // TODO
-    $hashed_pwd =  password_hash($password,PASSWORD_BCRYPT);
+    $hashed_pwd =  password_hash($password, PASSWORD_BCRYPT);
 
-    $request = $database ->prepare("INSERT INTO User(nom_utilisateur,password)VALUES (?,?)");
+    $request = $database->prepare("INSERT INTO User(nom_utilisateur,password)VALUES (?,?)");
 
-    $isSuccessful = $request->execute([$nom_utilisateur,$hashed_pwd]);
+    $isSuccessful = $request->execute([$nom_utilisateur, $hashed_pwd]);
 
     if ($isSuccessful) {
 
-        return (int)$database ->lastInsertId();
+        return (int)$database->lastInsertId();
     }
     return null;
-    }
-    
+}
+
 
 // Read (login)
-function get_user(int $id) : array | null {
+function get_user(int $id): array | null
+{
     $database = connect_database();
     // TODO 
-    $request = $database ->prepare("SELECT id, nom_utilisateur, password FROM User WHERE id = ?");
+    $request = $database->prepare("SELECT id, nom_utilisateur, password FROM User WHERE id = ?");
     $request->execute([$id]);
     $user = $request->fetch(PDO::FETCH_ASSOC);
-    if($user===false){
+    if ($user === false) {
         return null;
     }
 
@@ -48,31 +52,62 @@ function get_user(int $id) : array | null {
 }
 
 
-// CRUD Task AAAAAAHHHHHH
-// Create
-function add_task(string $name,string $description) : int | null {
+// // CRUD Task les tâches la table c'est task
+// // ajouter add  le name est le nom de la tâche // remplir la table task
+function add_task(string $name, string $description): int | null
+{
     $database = connect_database();
+    $sql = "INSERT INTO task (name, description) VALUES (:nom, :description)";
+    $stmt = $database->prepare($sql);
+    $stmt->execute(['nom' => $name, 'description' => $description]);
+     
+     $task_id = $database->lastInsertId();
 
-    
-    return $task_id;
+    return $task_id; //ça je dois garder 
+    var_dump($name);
+    var_dump($description);
+
 }
 
-//Read
-function get_task(int $id) : array | null {
-    $database = connect_database();
+// //Read
+function get_task(int $id): array | null
+{
+   $database = connect_database();
+    $sql = "SELECT * FROM task WHERE id = :id";
+    $stmt = $database->prepare($sql);
+    $stmt->execute(['id' => $id]);
+    $task = $stmt->fetch(PDO::FETCH_ASSOC);
     // TODO
-    return $task;
+    return $task;//ça je dois garder 
 }
+
 
 function get_all_task() : array | null {
     $database = connect_database();
     // TODO
-    return $tasks;
+    $sql = "SELECT * FROM task";
+    $stmt = $database->prepare($sql); // à changer ne pas mettre de query
+    $stmt ->execute();
+    $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $tasks;//ça je dois garder 
 }
 
-// Delete (BONUS)
+// // Delete (BONUS)
 function delete_task(int $id) : bool{
     $database = connect_database();
     // TODO
-    return $isSuccessful;
+    $sql = "DELETE FROM task WHERE id = :id";
+    $stmt = $database->prepare($sql);
+    $isSuccessful = $stmt->execute(['id' => $id]);
+    return $isSuccessful; //ça je dois garder 
+    
+}
+
+//Update
+function update(int $id, $name,$description)
+{
+    $database = connect_database();
+    $sql = "UPDATE task SET name = :nom, description = :description WHERE id = :id";
+    $stmt = $database->prepare($sql);
+    $stmt->execute(['id' => $id, 'nom' => $name, 'description' => $description]); //ça je dois garder il manque pdo fetch qqchose je pense
 }
