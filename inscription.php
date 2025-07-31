@@ -1,6 +1,7 @@
 <?php
 session_start();
 $isSuccess = false;
+require_once "bdd-crud.php";
 
 if (
     isset($_POST["nom_utilisateur"]) &&
@@ -15,7 +16,7 @@ if (
 
         $isSuccess = $request->execute([
             ':nom_utilisateur' => $_POST["nom_utilisateur"],
-            ':password' => password_hash($_POST["password"], PASSWORD_BCRYPT)
+            ':password' => password_hash($_POST["password"], PASSWORD_DEFAULT)
         ]);
  
     } catch (\Throwable $th) {
@@ -24,7 +25,6 @@ if (
     }
 }
 
-require_once "bdd-crud.php";
 
 ?>
 
@@ -35,6 +35,7 @@ require_once "bdd-crud.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 

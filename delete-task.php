@@ -2,7 +2,7 @@
 require_once "bdd-crud.php";
 
 // TODO Suppréssion d'une tâche en fonction de son ID passé en $_GET
-
+lien cliquable get
 
 ?>
 <!DOCTYPE html>

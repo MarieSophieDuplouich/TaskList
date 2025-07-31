@@ -35,7 +35,16 @@ function create_user(string $nom_utilisateur, string $password): int | null
     return null;
 }
 
+//trouver l'utilisateur par son nom_utilisateur
 
+function trouver_utilisateur_par_nom_utilisateur($nom_utilisateur): array | null
+{
+    $database = connect_database();
+    $request = $database->prepare("SELECT* FROM User WHERE nom_utilisateur = :nom_utilisateur");
+    $request->execute(['nom_utilisateur' => $nom_utilisateur]);
+    $user = $request->fetch(PDO::FETCH_ASSOC);
+    return $user ?: null;
+} 
 // Read (login)
 function get_user(int $id): array | null
 {

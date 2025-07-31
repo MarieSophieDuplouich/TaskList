@@ -2,9 +2,21 @@
 require_once "bdd-crud.php";
 ?>
 <?php
+// Je voudrais afficher l'user concerné dans le Bienvenue
+// if (
+//     isset($_SESSION["nom_utilisateur"])
+// ) {
+//     $database = new PDO("mysql:host=127.0.0.1;dbname=app-database", "root", "root");
+//     // 1. request
+//     $request = $database->prepare("SELECT * FROM User WHERE nom_utilisateur = :nom_utilisateur");
+//     // 2. response  
+//     $user_bienvenue = $request->fetch(PDO::FETCH_ASSOC);
+// }
+
 // Test auth
 if (isset($_SESSION["user_id"]) == false) {
     header("Location: login.php");
+    exit();
 }
 
 // Ajout d'une tâche via le formulaire
@@ -21,12 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
         delete_task($id);
-    }
+    } // lien cliquable get
 
     // mettre à jour les données update U tâche
 
     if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['description'])) {
-        $id = $_POST['id'];
+        $id = $_POST['id']; //// never change id 
         $name = $_POST['name'];
         $description = $_POST['description'];
 
@@ -45,6 +57,7 @@ $taskss = get_all_task(); // c'est ça le read
 
 <head>
     <title>Tasklist Accueil</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -58,12 +71,14 @@ $taskss = get_all_task(); // c'est ça le read
                 <!-- //quand il n'est pas connecté -->
             <?php else: ?>
                 <a href="logout.php">Se déconnecter</a>
-                 <!-- //quand il est  connecté -->
+                <!-- //quand il est  connecté -->
             <?php endif ?>
         </nav>
     </header>
 
-     <h2>Bienvenue <?= htmlspecialchars($_SESSION["user_id"]) ?> sur la page d'administration !!!!!!!!!!!!! </h2>
+    <!-- <h2>Bienvenue //htmlspecialchars($user_bienvenue) ?> sur la page d'administration !!!!!!!!!!!!! </h2> -->
+
+
 
     <!-- Formulaire pour ajouter une tâche en front-end -->
     <form action="" method="POST">
