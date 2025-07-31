@@ -63,6 +63,7 @@ $taskss = get_all_task(); // c'est ça le read
         </nav>
     </header>
 
+     <h2>Bienvenue <?= htmlspecialchars($_SESSION["user_id"]) ?> sur la page d'administration !!!!!!!!!!!!! </h2>
 
     <!-- Formulaire pour ajouter une tâche en front-end -->
     <form action="" method="POST">
@@ -71,7 +72,6 @@ $taskss = get_all_task(); // c'est ça le read
         <button type="submit">Ajouter</button>
 
     </form>
-
     <!-- Liste des tâches ne pas oublier les formulaires pour soumettre supprimer etc... nos données une tâche en front-end -->
     <h2>Liste des choses à faire</h2>
     <ul>
