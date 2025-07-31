@@ -20,7 +20,7 @@ if (
         $_POST["nom_utilisateur"]]);
     // 2. response  
     $user = $request->fetch(PDO::FETCH_ASSOC);
-    // var_dump($user); // $user["id"]
+    // var_dump($_POST["nom_utilisateur"]); 
 
     // 3. Authentification password ?
     if (
