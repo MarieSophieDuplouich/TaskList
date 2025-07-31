@@ -4,17 +4,51 @@
      padding: 0;
      box-sizing: border-box;
      /* border: black 1px solid; */
-     color: #00dab8;
+     color: #cda63c;
  }
 
  body {
      font-family: JejuGothic, sans-serif;
-     background-color: #011962;
+     background-color: #1b1b1a;
+     background-image: url("assets/granite-highlight.webp");
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
      cursor: grab;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     align-items: center;
  }
 
 
  /* accueil index.php*/
+ #customers {
+     border-collapse: collapse;
+     width: 100%;
+ }
+
+ #customers td,
+ #customers th {
+     border: 1px solid #ddd;
+     padding: 8px;
+ }
+
+ #customers tr:nth-child(even) {
+     background-color: #f2f2f2;
+ }
+
+ #customers tr:hover {
+     background-color: #ddd;
+ }
+
+ #customers th {
+     padding-top: 12px;
+     padding-bottom: 12px;
+     text-align: left;
+     background-color: #cda63c;
+     color: white;
+ }
 
  /* inscription.php */
 

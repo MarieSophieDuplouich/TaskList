@@ -90,28 +90,36 @@ $taskss = get_all_task(); // c'est ça le read
     <!-- Liste des tâches ne pas oublier les formulaires pour soumettre supprimer etc... nos données une tâche en front-end -->
     <h2>Liste des choses à faire</h2>
     <ul>
-        <?php foreach ($taskss as $taches): ?>
-            <li>
-                <?= $taches['name'] ?> (<?= $taches['description'] ?>)
-            </li>
-            <!-- read ci dessus -->
-            <!-- Formulaire pour supprimer une tâche en front-end   -->
+        <table id="customers">
+            <tr>
+                <th>Tâche à faire</th>
+                <th>Description</th>
+            </tr>
+            <?php foreach ($taskss as $taches): ?>
+                <tr>
+                    <td><?= $taches['name'] ?> </td>
+                    <td><?= $taches['description'] ?> </td>
+                </tr>
+        </table>
 
-            <form action="" method="POST" style="display: inline;">
-                <input type="hidden" name="id" value="<?= $taches['id'] ?>">
-                <button type="submit" value="<?= $taches['id'] ?>">Supprimer</button>
-            </form>
-            <!-- Formulaire pour modifier (update mise à jour) une tâche en front-end -->
+        <!-- read ci dessus -->
+        <!-- Formulaire pour supprimer une tâche en front-end   -->
 
-            <form action="" method="POST">
-                <input type="hidden" name="id" value="<?= $taches['id'] ?>" required>
-                <input type="text" name="name" value="<?= $taches['name'] ?>" required>
-                <input type="text" name="description" value="<?= $taches['description'] ?>" required>
-                <button type="submit">Modifier</button>
+        <form action="" method="POST" style="display: inline;">
+            <input type="hidden" name="id" value="<?= $taches['id'] ?>">
+            <button type="submit" value="<?= $taches['id'] ?>">Supprimer</button>
+        </form>
+        <!-- Formulaire pour modifier (update mise à jour) une tâche en front-end -->
 
-            </form>
+        <form action="" method="POST">
+            <input type="hidden" name="id" value="<?= $taches['id'] ?>" required>
+            <input type="text" name="name" value="<?= $taches['name'] ?>" required>
+            <input type="text" name="description" value="<?= $taches['description'] ?>" required>
+            <button type="submit">Modifier</button>
 
-        <?php endforeach; ?>
+        </form>
+
+    <?php endforeach; ?>
 
     </ul>
 </body>
