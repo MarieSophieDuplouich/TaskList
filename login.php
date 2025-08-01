@@ -20,13 +20,13 @@ if (
     $_POST["nom_utilisateur"]]);
     // 2. response  
     $user = $request->fetch(PDO::FETCH_ASSOC);
-    // var_dump($_POST["nom_utilisateur"]); 
 
     // 3. Authentification password ?
     if (
         password_verify($_POST["password"], $user["password"])
     ) {
         $_SESSION["user_id"] = $user["id"];
+        $_SESSION["nom_utilisateur"] = $user["nom_utilisateur"];
         header("Location: index.php");
         exit;
     } else {

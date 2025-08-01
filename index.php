@@ -2,17 +2,6 @@
 require_once "bdd-crud.php";
 ?>
 <?php
-// Je voudrais afficher l'user concerné dans le Bienvenue
-// if (
-//     isset($_SESSION["nom_utilisateur"])
-// ) {
-//     $database = new PDO("mysql:host=127.0.0.1;dbname=app-database", "root", "root");
-//     // 1. request
-//     $request = $database->prepare("SELECT * FROM User WHERE nom_utilisateur = :nom_utilisateur");
-//     // 2. response  
-//     $user_bienvenue = $request->fetch(PDO::FETCH_ASSOC);
-// }
-
 // Test auth
 if (isset($_SESSION["user_id"]) == false) {
     header("Location: login.php");
@@ -47,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-$taskss = get_all_task(); // c'est ça le read 
+$taskss = trouver_tâche_par_userid($_SESSION['user_id']); // c'est ça le read 
 
 
 ?>
@@ -76,10 +65,8 @@ $taskss = get_all_task(); // c'est ça le read
         </nav>
     </header>
 
-    <!-- <h2>Bienvenue //htmlspecialchars($user_bienvenue) ?> sur la page d'administration !!!!!!!!!!!!! </h2> -->
-
-
-
+    <h2>Bienvenue <?= htmlspecialchars($_SESSION['nom_utilisateur']) ?> sur la page d'administration</h2>
+ 
     <!-- Formulaire pour ajouter une tâche en front-end -->
     <form action="" method="POST">
         <input type="text" name="name" placeholder="Nom de la tâche" required>
@@ -90,10 +77,11 @@ $taskss = get_all_task(); // c'est ça le read
     <!-- Liste des tâches ne pas oublier les formulaires pour soumettre supprimer etc... nos données une tâche en front-end -->
     <h2>Liste des choses à faire</h2>
     <ul>
-        <table id="customers">
+        <table>
             <tr>
                 <th>Tâche à faire</th>
                 <th>Description</th>
+                 <th>Actions</th>
             </tr>
             <?php foreach ($taskss as $taches): ?>
                 <tr>
@@ -122,6 +110,7 @@ $taskss = get_all_task(); // c'est ça le read
     <?php endforeach; ?>
 
     </ul>
+
 </body>
 
 </html>

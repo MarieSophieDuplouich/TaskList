@@ -3,7 +3,7 @@
      margin: 0;
      padding: 0;
      box-sizing: border-box;
-     /* border: black 1px solid; */
+     border: red 1px solid;
      color: #cda63c;
  }
 
@@ -23,32 +23,29 @@
 
 
  /* accueil index.php*/
- #customers {
-     border-collapse: collapse;
-     width: 100%;
- }
+table {
+   background-color: #cda63c;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
- #customers td,
- #customers th {
-     border: 1px solid #ddd;
-     padding: 8px;
- }
+td, th {
+  color: #fff;
+  border: 1px solid #fff;
+  text-align: center;
+  padding: 8px;
+}
 
- #customers tr:nth-child(even) {
-     background-color: #f2f2f2;
- }
+actions-titre{
+     text-align: center; 
+   
+}
 
- #customers tr:hover {
-     background-color: #ddd;
- }
-
- #customers th {
-     padding-top: 12px;
-     padding-bottom: 12px;
-     text-align: left;
-     background-color: #cda63c;
-     color: white;
- }
+form{
+   background-color: #cda63c;
+   color: #fff; 
+}
 
  /* inscription.php */
 
@@ -62,3 +59,5 @@
  /* show-task.php bonus */
 
  /* validate-task.php bonus */
+
+

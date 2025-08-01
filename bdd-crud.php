@@ -24,7 +24,7 @@ function create_user(string $nom_utilisateur, string $password): int | null
     // TODO
     $hashed_pwd =  password_hash($password, PASSWORD_BCRYPT);
 
-    $request = $database->prepare("INSERT INTO User(nom_utilisateur,password)VALUES (:nom_utilisateur,:password)"); 
+    $request = $database->prepare("INSERT INTO User(nom_utilisateur,password)VALUES (:nom_utilisateur,:password)");
 
     $isSuccessful = $request->execute([$nom_utilisateur, $hashed_pwd]);
 
@@ -44,7 +44,22 @@ function trouver_utilisateur_par_nom_utilisateur($nom_utilisateur): array | null
     $request->execute(['nom_utilisateur' => $nom_utilisateur]);
     $user = $request->fetch(PDO::FETCH_ASSOC);
     return $user ?: null;
-} 
+}
+
+//pour trouver tâche associé à un utilisateur précis pour éviter que toutes les tâches soient affichées dans la même page
+function trouver_tâche_par_userid($user_id): array | null
+{
+    $database = connect_database();
+    $requete =  $database->prepare("SELECT* FROM task WHERE user_id = :user_id");
+
+    $requete->execute(['user_id' => $user_id]);
+
+    $taskss = $requete->fetchAll(PDO::FETCH_ASSOC);
+    return $taskss;
+}
+
+
+
 // Read (login)
 function get_user(int $id): array | null
 {
@@ -68,9 +83,9 @@ function add_task(int $user_id, string $name, string $description): int | null
     $database = connect_database();
     $sql = "INSERT INTO task (user_id, name, description) VALUES (:user_id, :name, :description)";
     $stmt = $database->prepare($sql);
-    $stmt->execute(['user_id' => $user_id,'name' => $name, 'description' => $description]);
-     
-     $task_id = $database->lastInsertId();
+    $stmt->execute(['user_id' => $user_id, 'name' => $name, 'description' => $description]);
+
+    $task_id = $database->lastInsertId();
 
     return $task_id; //ça je dois garder 
 
@@ -81,39 +96,41 @@ function add_task(int $user_id, string $name, string $description): int | null
 // //Read
 function get_task(int $id): array | null
 {
-   $database = connect_database();
+    $database = connect_database();
     $sql = "SELECT * FROM task WHERE id = :id";
     $stmt = $database->prepare($sql);
     $stmt->execute(['id' => $id]);
     $task = $stmt->fetch(PDO::FETCH_ASSOC);
     // TODO
-    return $task;//ça je dois garder 
+    return $task; //ça je dois garder 
 }
 
 
-function get_all_task() : array | null {
+function get_all_task(): array | null
+{
     $database = connect_database();
     // TODO
     $sql = "SELECT * FROM task";
     $stmt = $database->prepare($sql); // à changer ne pas mettre de query
-    $stmt ->execute();
+    $stmt->execute();
     $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $tasks;//ça je dois garder 
+    return $tasks; //ça je dois garder 
 }
 
 // // Delete (BONUS)
-function delete_task(int $id) : bool{
+function delete_task(int $id): bool
+{
     $database = connect_database();
     // TODO
     $sql = "DELETE FROM task WHERE id = :id";
     $stmt = $database->prepare($sql);
     $isSuccessful = $stmt->execute(['id' => $id]);
     return $isSuccessful; //ça je dois garder 
-    
+
 }
 
 //Update
-function update(int $id, $name,$description)
+function update(int $id, $name, $description)
 {
     $database = connect_database();
     $sql = "UPDATE task SET name = :name, description = :description WHERE id = :id";

@@ -43,7 +43,7 @@ if (
     <!-- Page d'inscription	Permettre à un nouvel utilisateur de s'inscrire avec un nom d'utilisateur et un mot de passe	-Créer un nouvel utilisateur dans la table User avec le mot de passe chiffré avec l'algo bcrypt
     -Redirection vers la page de connexion -->
     <!-- TODO Formulaire pour s'inscrire (créer un utilisateur) -->
-    <h1>Inscriptionnn</h1>
+    <h1>Inscription</h1>
     <a href="inscription.php">S'inscrire</a>
     <a href="seconnecter.php">Se connecter</a>
     
