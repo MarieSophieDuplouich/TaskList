@@ -12,6 +12,9 @@
  h2,
  h3,
  h4 {
+   background-color: #fff;
+   padding: 70px;
+   border-radius: 25px;
    color: #cda63c;
    margin-top: 30px;
    margin-bottom: 30px;

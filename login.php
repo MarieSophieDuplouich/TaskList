@@ -44,7 +44,7 @@ if (
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Connexion ToDoList for Casino Tasklist</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -60,7 +60,7 @@ if (
         <div class="side six"></div>
     </div>
 
-    <h1>Connexion</h1>
+    <h1>Connexion ToDoList for Casino Tasklist</h1>
 
 
     <a href="inscription.php">Pas de compte ? S'inscrire</a>

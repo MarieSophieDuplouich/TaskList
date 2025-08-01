@@ -45,7 +45,7 @@ $taskss = trouver_tâche_par_userid($_SESSION['user_id']); // c'est ça le read
 <html>
 
 <head>
-    <title>Tasklist Accueil</title>
+    <title>Accueil  ToDoList for Casino Tasklist</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -60,7 +60,7 @@ $taskss = trouver_tâche_par_userid($_SESSION['user_id']); // c'est ça le read
         <div class="side six"></div>
     </div>
 
-    <h1>Tasklist Accueil</h1>
+    <h1>Accueil  ToDoList for Casino Tasklist</h1>
 
     <!-- Navigation ne pas oublier le ! avant isset pour prouver l'inverse "ne pas" Si l'user_id n'est pas connecté il doit se connecter sinon il doit se déconnecter -->
     <header>
