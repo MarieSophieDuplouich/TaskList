@@ -13,7 +13,7 @@
  h3,
  h4 {
    background-color: #fff;
-   padding: 70px;
+   padding: 30px;
    border-radius: 25px;
    color: #cda63c;
    margin-top: 30px;
@@ -35,6 +35,7 @@
  }
 /* dé 3D */
 .dice {
+
   position: relative;
   width: 200px;
   height: 200px;
