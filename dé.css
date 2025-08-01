@@ -8,7 +8,7 @@
 
 
 body{
-
+   background-color: #011962;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,15 +25,21 @@ body{
 }
 
 .side {
+  
   width: 100%;
   height: 100%;
-  background: #011962;
-  border: 2px solid black;
+  background-color: #011962;
+  border-radius: 17%;
   position: absolute;
   opacity: 0.7;
   display: flex;
   align-items: center;
   justify-content: center;
+   box-shadow:
+    0 0 5px rgba(255, 255, 255, 0.2),
+    0 0 15px rgba(255, 255, 255, 0.3),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 60px rgba(255, 255, 255, 0.5);
 }
 
 /* pour faire les pins ronds de mon dé */
@@ -42,28 +48,47 @@ body{
   content: '';
   width: 20%;
   height: 20%;
-  background: black;
+  background: #fff;
   border-radius: 50%;
+  
+  box-shadow:
+    0 0 5px rgba(255, 255, 255, 0.2),
+    0 0 15px rgba(255, 255, 255, 0.3),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 60px rgba(255, 255, 255, 0.5);
+    inset: 0 0 10px aqua;
+    filter: blur(1px);
+  
   }
 
 
 .one {
   transform: translateZ(100px);
+
+  box-shadow: rgba(194, 242, 255, 0.17) 0px -23px 25px 0px inset,
+    rgba(194, 242, 255, 0.15) 0px -36px 30px 0px inset,
+    rgba(194, 242, 255, 0.1) 0px -79px 40px 0px inset,
+    rgba(194, 242, 255, 0.06) 0px 2px 1px,
+    rgba(194, 242, 255, 0.09) 0px 4px 2px,
+    rgba(194, 242, 255, 0.09) 0px 8px 4px,
+    rgba(194, 242, 255, 0.09) 0px 16px 8px,
+    rgba(194, 242, 255, 0.09) 0px 32px 16px;
 }
 
 
 .two::before {
     background: transparent;
-    box-shadow: #000 -50px -50px 0px 0px, #000 50px 50px 0px 0px;
+    box-shadow: #fff -50px -50px 0px 0px, #fff 50px 50px 0px 0px;
   }
 
 .two {
   transform: translateX(-100px) rotateY(-90deg);
+  
 }
 
 
 .three::before {
-    box-shadow: #000 -50px 50px 0px 0px, #000 50px -50px 0px 0px;
+    box-shadow: #fff -50px 50px 0px 0px, #fff 50px -50px 0px 0px;
   }
 
 
@@ -73,8 +98,8 @@ body{
 
 .four::before {
     background: transparent;
-    box-shadow: #000 -50px 50px 0px 0px, #000 -50px -50px 0px 0px,
-      #000 50px 50px 0px 0px, #000 50px -50px 0px 0px;
+    box-shadow: #fff -50px 50px 0px 0px, #fff -50px -50px 0px 0px,
+      #fff 50px 50px 0px 0px, #fff 50px -50px 0px 0px;
   }
 
 .four {
@@ -82,8 +107,8 @@ body{
 }
 
 .five::before {
-    box-shadow: #000 -50px -50px 0px 0px, #000 -50px 50px 0px 0px,
-      #000 50px -50px 0px 0px, #000 50px 50px 0px 0px;
+    box-shadow: #fff -50px -50px 0px 0px, #fff -50px 50px 0px 0px,
+      #fff 50px -50px 0px 0px, #fff 50px 50px 0px 0px;
   }
 
 
@@ -93,8 +118,8 @@ body{
 
 .six::before {
     background: transparent;
-    box-shadow: #000 -50px -50px 0px 0px, #000 -50px 0px 0px 0px,
-      #000 -50px 50px 0px 0px, #000 50px -50px 0px 0px, #000 50px 0px 0px 0px, #000
+    box-shadow: #fff -50px -50px 0px 0px, #fff -50px 0px 0px 0px,
+      #fff -50px 50px 0px 0px, #fff 50px -50px 0px 0px, #fff 50px 0px 0px 0px, #fff
         50px 50px 0px 0px;
   }
   
@@ -121,7 +146,7 @@ body{
 
 
 
-
+/* l'ancien dé */
 
 
 
@@ -156,7 +181,6 @@ body{
 
 
 #square-first {
-  
 
   box-shadow: rgba(194, 242, 255, 0.17) 0px -23px 25px 0px inset,
     rgba(194, 242, 255, 0.15) 0px -36px 30px 0px inset,

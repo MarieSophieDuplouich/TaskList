@@ -40,6 +40,16 @@ if (
 </head>
 
 <body>
+           <!-- dé en 3D -->
+    <div class="dice">
+        <div class="side one"></div>
+        <div class="side two"></div>
+        <div class="side three"></div>
+        <div class="side four"></div>
+        <div class="side five"></div>
+        <div class="side six"></div>
+    </div>
+
     <!-- Page d'inscription	Permettre à un nouvel utilisateur de s'inscrire avec un nom d'utilisateur et un mot de passe	-Créer un nouvel utilisateur dans la table User avec le mot de passe chiffré avec l'algo bcrypt
     -Redirection vers la page de connexion -->
     <!-- TODO Formulaire pour s'inscrire (créer un utilisateur) -->

@@ -50,6 +50,16 @@ $taskss = trouver_tâche_par_userid($_SESSION['user_id']); // c'est ça le read
 </head>
 
 <body>
+        <!-- dé en 3D -->
+    <div class="dice">
+        <div class="side one"></div>
+        <div class="side two"></div>
+        <div class="side three"></div>
+        <div class="side four"></div>
+        <div class="side five"></div>
+        <div class="side six"></div>
+    </div>
+
     <h1>Tasklist Accueil</h1>
 
     <!-- Navigation ne pas oublier le ! avant isset pour prouver l'inverse "ne pas" Si l'user_id n'est pas connecté il doit se connecter sinon il doit se déconnecter -->
@@ -65,13 +75,14 @@ $taskss = trouver_tâche_par_userid($_SESSION['user_id']); // c'est ça le read
         </nav>
     </header>
 
+
     <h2>Bienvenue <?= htmlspecialchars($_SESSION['nom_utilisateur']) ?> sur la page d'administration</h2>
 
     <!-- Formulaire pour ajouter une tâche en front-end -->
     <form action="" method="POST">
         <input type="text" name="name" placeholder="Nom de la tâche" required>
         <input type="text" name="description" placeholder="description" required>
-        <button class="button"  type="submit">Ajouter</button>
+        <button class="button" type="submit">Ajouter</button>
 
     </form>
     <!-- Liste des tâches ne pas oublier les formulaires pour soumettre supprimer etc... nos données une tâche en front-end -->
@@ -91,7 +102,7 @@ $taskss = trouver_tâche_par_userid($_SESSION['user_id']); // c'est ça le read
                         <!-- Formulaire pour supprimer une tâche en front-end   -->
                         <form action="" method="POST" style="display: inline;">
                             <input type="hidden" name="id" value="<?= $taches['id'] ?>">
-                            <button class="button"  type="submit" value="<?= $taches['id'] ?>">Supprimer</button>
+                            <button class="button" type="submit" value="<?= $taches['id'] ?>">Supprimer</button>
                         </form>
                         <!-- Formulaire pour modifier (update mise à jour) une tâche en front-end -->
 
@@ -99,15 +110,15 @@ $taskss = trouver_tâche_par_userid($_SESSION['user_id']); // c'est ça le read
                             <input type="hidden" name="id" value="<?= $taches['id'] ?>" required>
                             <input type="text" name="name" value="<?= $taches['name'] ?>" required>
                             <input type="text" name="description" value="<?= $taches['description'] ?>" required>
-                            <button class="button"  type="submit">Modifier</button>
+                            <button class="button" type="submit">Modifier</button>
 
                         </form>
                     </td>
                 </tr>
-                 <?php endforeach; ?>
+            <?php endforeach; ?>
         </table>
 
-      
+
 
     </ul>
 

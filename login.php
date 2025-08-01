@@ -50,6 +50,16 @@ if (
 </head>
 
 <body>
+           <!-- dé en 3D -->
+    <div class="dice">
+        <div class="side one"></div>
+        <div class="side two"></div>
+        <div class="side three"></div>
+        <div class="side four"></div>
+        <div class="side five"></div>
+        <div class="side six"></div>
+    </div>
+
     <h1>Connexion</h1>
 
 
