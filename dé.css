@@ -2,15 +2,129 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: black 1px solid;
+  /* border: black 1px solid; */
   color: #FFFFFF;
 }
 
 
-body {
-  background-color: #011962;
+body{
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
+
+
+.dice {
+  position: relative;
+  width: 200px;
+  height: 200px;
+   transform-style: preserve-3d;
+  transform: rotateY(185deg) rotateX(150deg) rotateZ(315deg);
+}
+
+.side {
+  width: 100%;
+  height: 100%;
+  background: #011962;
+  border: 2px solid black;
+  position: absolute;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* pour faire les pins ronds de mon dé */
+  .side::before {
+ /* le content va afficher le rond noir si je mets un X ça va faire apparaitre un X */
+  content: '';
+  width: 20%;
+  height: 20%;
+  background: black;
+  border-radius: 50%;
+  }
+
+
+.one {
+  transform: translateZ(100px);
+}
+
+
+.two::before {
+    background: transparent;
+    box-shadow: #000 -50px -50px 0px 0px, #000 50px 50px 0px 0px;
+  }
+
+.two {
+  transform: translateX(-100px) rotateY(-90deg);
+}
+
+
+.three::before {
+    box-shadow: #000 -50px 50px 0px 0px, #000 50px -50px 0px 0px;
+  }
+
+
+.three {
+  transform: translateY(100px) rotateX(90deg);
+}
+
+.four::before {
+    background: transparent;
+    box-shadow: #000 -50px 50px 0px 0px, #000 -50px -50px 0px 0px,
+      #000 50px 50px 0px 0px, #000 50px -50px 0px 0px;
+  }
+
+.four {
+  transform: translateY(-100px) rotateX(90deg);
+}
+
+.five::before {
+    box-shadow: #000 -50px -50px 0px 0px, #000 -50px 50px 0px 0px,
+      #000 50px -50px 0px 0px, #000 50px 50px 0px 0px;
+  }
+
+
+.five {
+  transform: translateX(100px) rotateY(90deg);
+}
+
+.six::before {
+    background: transparent;
+    box-shadow: #000 -50px -50px 0px 0px, #000 -50px 0px 0px 0px,
+      #000 -50px 50px 0px 0px, #000 50px -50px 0px 0px, #000 50px 0px 0px 0px, #000
+        50px 50px 0px 0px;
+  }
+  
+
+
+
+.six {
+  transform: translateZ(-100px);
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0) rotateX(45deg) rotateZ(45deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(45deg) rotateZ(45deg);
+  }
+}
+
+.dice {
+  animation: rotate 5s;
+}
+
+
+
+
+
+
+
 
 .container-carre {
   display: flex;
