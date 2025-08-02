@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dé Lumineux WebGL</title>
+  <style>
+    body { margin: 0; background: #000; overflow: hidden; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // Scene & Camera
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // Lights
+  const light = new THREE.PointLight(0x00bfff, 3, 100);
+  light.position.set(10, 10, 10);
+  scene.add(light);
+  const ambient = new THREE.AmbientLight(0x0044ff, 0.5);
+  scene.add(ambient);
+
+  // Cube material (translucent + glow)
+  const cubeMaterial = new THREE.MeshPhysicalMaterial({
+    color: 0x00aaff,
+    transparent: true,
+    opacity: 0.5,
+    roughness: 0.1,
+    metalness: 0.2,
+    transmission: 1,
+    thickness: 2,
+    emissive: 0x00aaff,
+    emissiveIntensity: 0.4
+  });
+
+  // Dice geometry
+  const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
+  const dice = new THREE.Mesh(cubeGeometry, cubeMaterial);
+  scene.add(dice);
+
+  // Glow effect (outer halo)
+  const glowMaterial = new THREE.MeshBasicMaterial({
+    color: 0x00bfff,
+    transparent: true,
+    opacity: 0.2,
+    side: THREE.BackSide
+  });
+  const glow = new THREE.Mesh(new THREE.BoxGeometry(2.3, 2.3, 2.3), glowMaterial);
+  dice.add(glow);
+
+  // Dots (white glowing spheres)
+  const dotMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 1 });
+  const dotGeometry = new THREE.SphereGeometry(0.15, 16, 16);
+
+  // Dot positions for each face
+  const faces = [
+    [[0,0,1]], // 1
+    [[-0.5,0.5,1],[0.5,-0.5,1]], // 2
+    [[-0.5,0.5,1],[0,0,1],[0.5,-0.5,1]], // 3
+    [[-0.5,0.5,1],[0.5,0.5,1],[-0.5,-0.5,1],[0.5,-0.5,1]], // 4
+    [[-0.5,0.5,1],[0.5,0.5,1],[0,0,1],[-0.5,-0.5,1],[0.5,-0.5,1]], // 5
+    [[-0.5,0.5,1],[0.5,0.5,1],[-0.5,0,1],[0.5,0,1],[-0.5,-0.5,1],[0.5,-0.5,1]] // 6
+  ];
+
+  // Function to add dots to a face
+  function addDotsToFace(faceIndex, rotation) {
+    faces[faceIndex].forEach(pos => {
+      const dot = new THREE.Mesh(dotGeometry, dotMaterial);
+      dot.position.set(...pos);
+      dot.position.z = 1; // depth
+      dot.rotation.set(rotation.x, rotation.y, rotation.z);
+      const container = new THREE.Object3D();
+      container.add(dot);
+      container.rotation.set(rotation.x, rotation.y, rotation.z);
+      dice.add(container);
+    });
+  }
+
+  // Place dots on all 6 faces
+  addDotsToFace(0, {x:0, y:0, z:0}); // front
+  addDotsToFace(1, {x:0, y:Math.PI, z:0}); // back
+  addDotsToFace(2, {x:0, y:Math.PI/2, z:0}); // right
+  addDotsToFace(3, {x:0, y:-Math.PI/2, z:0}); // left
+  addDotsToFace(4, {x:Math.PI/2, y:0, z:0}); // top
+  addDotsToFace(5, {x:-Math.PI/2, y:0, z:0}); // bottom
+
+  // Camera position
+  camera.position.z = 6;
+
+  // Animation
+  function animate() {
+    requestAnimationFrame(animate);
+    dice.rotation.x += 0.005;
+    dice.rotation.y += 0.01;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // Resize handling
+  window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dé 3D Lumineux</title>
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      perspective: 800px;
+    }
+
+    .scene {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(-20deg) rotateY(45deg);
+    }
+
+    .face {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at center, #00ccff, #003366);
+      border-radius: 20px;
+      box-shadow: inset 0 0 30px #00ccff, 0 0 30px #00ccff;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .dot {
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle at center, #00ccff, #0066cc);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+      margin: auto;
+    }
+
+    .front  { transform: translateZ(100px); }
+    .right  { transform: rotateY(90deg) translateZ(100px); }
+    .top    { transform: rotateX(90deg) translateZ(100px); }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <!-- Face avant : 5 -->
+    <div class="face front">
+      <div class="dot"></div><div></div><div class="dot"></div>
+      <div></div><div class="dot"></div><div></div>
+      <div class="dot"></div><div></div><div class="dot"></div>
+    </div>
+
+    <!-- Face droite : 6 -->
+    <div class="face right">
+      <div class="dot"></div><div></div><div class="dot"></div>
+      <div class="dot"></div><div></div><div class="dot"></div>
+      <div class="dot"></div><div></div><div class="dot"></div>
+    </div>
+
+    <!-- Face du dessus : 4 -->
+    <div class="face top">
+      <div class="dot"></div><div></div><div class="dot"></div>
+      <div></div><div></div><div></div>
+      <div class="dot"></div><div></div><div class="dot"></div>
+    </div>
+  </div>
+</body>
+</html>
